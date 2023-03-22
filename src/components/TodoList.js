@@ -32,8 +32,14 @@ const TodoList = () => {
         return
         setTodos(todos => [...todos,{ task, isCompleated: false}])
         setTask('')
-
     }
+
+    const handleRemoveTask = (index) => {
+        const NewTodos = [...todos]
+        NewTodos.splice(index,1)
+        setTodos(NewTodos)
+    }
+
     return(
         <form onSubmit={handleSubmit}>
             <h1>Todo List</h1>
@@ -45,7 +51,7 @@ const TodoList = () => {
             <button type="submit">追加</button>
             <ul>
                 { todos.map((todo,index) => (
-                    <li key={ index }>{ todo.task }</li>
+                    <li key={ index }>{ todo.task } <button onClick={ () => handleRemoveTask(index) }>削除</button></li>
                 ))}
             </ul>
         </form>
