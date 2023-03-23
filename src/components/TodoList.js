@@ -1,21 +1,20 @@
 import { useState } from "react";
-
 const TodoList = () => {
 
     const initialState = [
         {
             task: "Reactを学ぶ",
-            isCompleated: false
+            isCompleted: false
         },
 
         {
             task: "Golangを学ぶ",
-            isCompleated: false
+            isCompleted: false
         },
 
         {
             task: "GraphQLを学ぶ",
-            isCompleated: false
+            isCompleted: false
         },
     ]
 
@@ -30,8 +29,14 @@ const TodoList = () => {
         event.preventDefault()
         if (task === '')
         return
-        setTodos(todos => [...todos,{ task, isCompleated: false}])
+        setTodos(todos => [...todos,{ task, isCompleted: false}])
         setTask('')
+    }
+
+    const handleTaskCompleated = (index) => {
+        const newTodos = [...todos]
+        newTodos[index].isCompleted = !newTodos[index].isCompleated
+        setTodos(newTodos)
     }
 
     const handleRemoveTask = (index) => {
@@ -39,6 +44,10 @@ const TodoList = () => {
         NewTodos.splice(index,1)
         setTodos(NewTodos)
     }
+
+
+
+
 
     return(
         <form onSubmit={handleSubmit}>
@@ -48,10 +57,24 @@ const TodoList = () => {
                             placeholder="新しいタスク"
                             onChange={handleNewTask}
                             />
-            <button type="submit">追加</button>
+            <button type="submit" hidden>追加</button>
             <ul>
                 { todos.map((todo,index) => (
-                    <li key={ index }>{ todo.task } <button onClick={ () => handleRemoveTask(index) }>削除</button></li>
+                    <li key={ index }      
+                    style={{
+                        textDecoration: todo.isCompleted ? 'line-through' : 'none',
+                    }}>
+                        <label>
+                            <input
+                                type={"checkbox"}
+                                checked={todo.isCompleted}
+                                onChange={ () => handleTaskCompleated(index) }
+                            />
+                        </label>
+                        { todo.task } 
+                        <button onClick={ () => handleRemoveTask(index) }>削除</button>
+                    <button></button>
+                    </li>
                 ))}
             </ul>
         </form>
