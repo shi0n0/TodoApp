@@ -1,4 +1,6 @@
 import React from "react";
+import './css/style.css'
+
 const TodoList = ({todos,setTodos}) => {
     const handleTaskCompleated = (index) => {
         const newTodos = [...todos]
@@ -13,22 +15,26 @@ const TodoList = ({todos,setTodos}) => {
     };
 
     return(
-        <ul>
+        <ul className="TodoItem">
             { todos.map((todo,index) => (
-                <li key={ index }      
-                style={{
-                    color: todo.isCompleted ? 'green' : 'initial',
-                }}>
-                    <label>
-                        <input
-                            type={"checkbox"}
-                            checked={todo.isCompleted}
-                            onChange={ () => handleTaskCompleated(index) }
-                        />
-                    </label>
-                    { todo.task } 
-                    <button onClick={ () => handleRemoveTask(index) }>削除</button>
-                </li>
+                <div className="TodoItemChild">
+                    <li key={ index }      
+                    style={{
+                        color: todo.isCompleted ? 'green' : 'initial',
+                    }}>
+
+                        <h2>{ todo.task } </h2>
+                        <label>
+                            <button
+                                type="button"
+                                onClick={ () => handleTaskCompleated(index) }>
+                                完了
+                            </button>
+                        </label>
+
+                        <button onClick={ () => handleRemoveTask(index) }>削除</button>
+                    </li>
+                </div>
             ))}
         </ul>
     );
