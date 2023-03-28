@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './css/style.css'
+
 const AddTodo = ({ setTodos}) => {
     const [task,setTask] = useState({
         text: '',
