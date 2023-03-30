@@ -1,11 +1,8 @@
 import Todo from './components/Todo';
 import './App.css'
-import { ApolloProvider } from '@apollo/client';
-import { client } from './graphql/client';
 
 function App() {
   return (
-    <ApolloProvider client={client}>
       <>
       <header>
         <a href='/'>
@@ -14,7 +11,6 @@ function App() {
       </header>
         <Todo />
       </>
-    </ApolloProvider>
   );
 }
 

@@ -17,8 +17,8 @@ const TodoList = ({todos,setTodos}) => {
     return(
         <ul className="TodoItem">
             { todos.map((todo,index) => (
-                <div className="TodoItemChild">
-                    <li key={ index }      
+                <div className="TodoItemChild" key={index}>
+                    <li   //一意にしないと警告月出るので回避 
                     style={{
                         color: todo.isCompleted ? 'green' : 'initial',
                     }}>

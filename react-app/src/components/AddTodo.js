@@ -1,28 +1,32 @@
 import { useState } from 'react';
 import './css/style.css'
 
-const AddTodo = ({ setTodos}) => {
+const AddTodo = ({setTodos}) => {
     const [task,setTask] = useState({
         text: '',
     })
 
     const handleNewTask = (event) => {
-        setTask(event.target.value)
-    }
+        setTask({ text: event.target.value });
+      };
+      
+      const handleSubmit = (event) => {
+        event.preventDefault();
+        if (task.text === '') {
+          return;
+        }
+        setTodos(todos => [...todos, { task: task.text, isCompleted: false }]);
+        setTask({ text: '' });
+        console.log(task);
+      };
+      
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        if (task === '')
-        return
-        setTodos(todos => [...todos,{ task, isCompleted: false}])
-        setTask('')
-    };
 
     return (
         <div className='AddContainer'>
             <form onSubmit={handleSubmit} className='AddInput'>
                 <input
-                    value={task}
+                    value={task.text}
                     placeholder="タスクの追加"
                     onChange={handleNewTask}
                     />
