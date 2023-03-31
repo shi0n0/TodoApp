@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 import './css/style.css'
 
@@ -24,12 +23,12 @@ const Todo = () => {
 
     const [todos,setTodos] = useState(initialState);
 
-    return(
-        <div className='container'>
-            <TodoList todos={todos} setTodos={setTodos}/>
-            <AddTodo setTodos={setTodos} />
-        </div>
-    );
+    return (
+          <div className='container'>
+            <TodoList todos={todos} setTodos={setTodos} />
+          </div>
+      );
+    
 };
 
 export default Todo;
