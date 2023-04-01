@@ -1,6 +1,6 @@
-Reactの勉強の一環で作るTodoアプリです。
-機能を盛り込むより、React開発の流れや特徴などを理解するためのものになります。
-基本的な機能を搭載し、シンプルで違和感のないようなアプリに仕上げたいです
+ReactでApolloClientを建ててGraphQLでデータをGraphQLサーバーに送っています。
 
-現在はまだ初期のタスク表示しかできません。
-*update 簡易的なTODOは完成しました。
+使用技術
+・React
+・GraphQL
+・ApolloClient
